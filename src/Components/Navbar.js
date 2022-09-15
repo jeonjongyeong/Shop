@@ -9,8 +9,8 @@ function nav() {
           <Navbar.Brand href="#home">JY.Shop</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">남자옷</Nav.Link>
-            <Nav.Link href="#pricing">여자옷</Nav.Link>
+            <Nav.Link href="#features">Man</Nav.Link>
+            <Nav.Link href="#pricing">Woman</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
