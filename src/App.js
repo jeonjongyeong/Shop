@@ -20,14 +20,7 @@ function App() {
             return (
               <Col className="md-4">
                 <div key={index}>
-                  <Main
-                    img={`https://codingapple1.github.io/shop/shoes${[
-                      index + 1,
-                    ]}.jpg`}
-                    name={shoes[index].title}
-                    price={shoes[index].price}
-                    content={shoes[index].content}
-                  />
+                  <Main shoes={shoes[index]} index={index + 1} />
                 </div>
               </Col>
             );
