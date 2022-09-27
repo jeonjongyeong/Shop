@@ -5,6 +5,14 @@
   background-size: cover;
 }
 
+.link {
+  padding: 5px;
+  text-decoration: none;
+  text-align: bottom;
+  font-size: 16px;
+  color: gray;
+}
+
 .App {
   text-align: center;
 }
