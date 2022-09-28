@@ -1,21 +1,34 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
-
-let YellowBtn = styled.button`
-  background: ${(props) => props.color};
-  color: ${(props) => (props.color == "blue" ? "white" : "black")};
-  padding: 10px;
-`;
 
 function Detail(props) {
   let { id } = useParams();
   // let findGoods = props.shoes.find(function (goods) {
   //   return goods.id === id;
   // });
+
+  useEffect(() => {});
+
+  let [count, setCount] = useState(0);
+  let [chance, setChance] = useState(
+    <div className="alert alert-warning">2초 이내 구매시 할인</div>
+  );
+
+  setTimeout(() => {
+    setChance("");
+  }, 2000);
+
   return (
     <div className="container">
-      <YellowBtn color="blue">버튼</YellowBtn>
-
+      {chance}
+      {count}
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        클릭
+      </button>
       <div className="row">
         <div className="col-md-6">
           <img
