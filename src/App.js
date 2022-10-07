@@ -10,6 +10,7 @@ import axios from "axios";
 
 function App() {
   let [shoes, setShoes] = useState(data);
+  let [count, setCount] = useState(2);
 
   return (
     <div className="App">
@@ -74,8 +75,13 @@ function App() {
       </Routes>
       <button
         onClick={() => {
+          <p>로딩중..</p>;
+          setCount(count + 1);
+          if (count > 3) {
+            alert("더보기가 없습니다.");
+          }
           axios
-            .get("https://codingapple1.github.io/shop/data2.json")
+            .get("https://codingapple1.github.io/shop/data" + count + ".json")
             .then((result) => {
               console.log(result.data);
               let copy = [...shoes, ...result.data];
