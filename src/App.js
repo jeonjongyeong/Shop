@@ -6,9 +6,10 @@ import Main from "./Components/main";
 import Detail from "./Components/Detail";
 import data from "./data";
 import { Routes, Route, Outlet } from "react-router-dom";
+import axios from "axios";
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
 
   return (
     <div className="App">
@@ -71,6 +72,22 @@ function App() {
           <Route path="two" element={<div>생일기념 쿠폰받기</div>}></Route>
         </Route>
       </Routes>
+      <button
+        onClick={() => {
+          axios
+            .get("https://codingapple1.github.io/shop/data2.json")
+            .then((result) => {
+              console.log(result.data);
+              let copy = [...shoes, ...result.data];
+              setShoes(copy);
+            })
+            .catch(() => {
+              console.log("실패했습니다.");
+            });
+        }}
+      >
+        더보기
+      </button>
     </div>
   );
 }

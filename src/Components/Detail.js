@@ -12,13 +12,13 @@ function Detail(props) {
     // let timer = setTimeout(() => {
     //   setChance(false);
     // }, 2000);
-    if (isNaN(num) == true) {
+    if (isNaN(num) === true) {
       alert("문자는 입력이 되지 않습니다.");
     }
     // return () => {
     //   clearTimeout(timer);
     // };
-  }, []);
+  });
 
   return (
     <div className="container">
@@ -38,6 +38,7 @@ function Detail(props) {
           <img
             src={"https://codingapple1.github.io/shop/shoes" + id + ".jpg"}
             width="100%"
+            alt="이미지"
           />
         </div>
         <div className="col-md-6 mt-4">
