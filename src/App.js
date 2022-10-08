@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { createContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Components/Navbar";
 import Main from "./Components/main";
@@ -8,9 +8,12 @@ import data from "./data";
 import { Routes, Route, Outlet } from "react-router-dom";
 import axios from "axios";
 
+export let Context1 = createContext();
+
 function App() {
   let [shoes, setShoes] = useState(data);
   let [count, setCount] = useState(2);
+  let [재고] = useState([10, 11, 12]);
 
   return (
     <div className="App">
@@ -41,9 +44,9 @@ function App() {
         <Route
           path="/detail/:id"
           element={
-            <div>
+            <Context1.Provider value={{ 재고 }}>
               <Detail shoes={shoes} />
-            </div>
+            </Context1.Provider>
           }
         />
         <Route path="*" element={<div>404없는 페이지</div>} />
