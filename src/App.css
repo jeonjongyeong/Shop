@@ -1,3 +1,20 @@
+.start {
+  transform: scale(0);
+}
+
+.end {
+  transform: scale(1);
+  transition: all 0.5s;
+}
+
+.detailS {
+  opacity: 0;
+}
+
+.detailE {
+  opacity: 1;
+}
+
 .main-bg {
   height: 300px;
   background-image: url("./img/bg.png");

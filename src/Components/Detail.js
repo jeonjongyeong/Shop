@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+import "../App.css";
 
 function Detail(props) {
   let { id } = useParams();
 
-  let [count, setCount] = useState(0);
+  // let [count, setCount] = useState(0);
   let [chance, setChance] = useState(true);
   let [num, setNum] = useState("");
   let [tab, setTab] = useState(0);
+  let [fade2, setFade2] = useState("");
 
   useEffect(() => {
+    setFade2("end");
     let timer = setTimeout(() => {
       setChance(false);
     }, 2000);
@@ -18,13 +21,14 @@ function Detail(props) {
       alert("문자는 입력이 되지 않습니다.");
     }
     return () => {
+      setFade2("end");
       clearTimeout(timer);
     };
   });
 
   return (
-    <div className="container">
-      {chance == true ? (
+    <div className={"container start " + fade2}>
+      {chance === true ? (
         <div className="alert alert-warning">2초 이내 구매시 할인</div>
       ) : null}
       {/* {count}
@@ -58,7 +62,14 @@ function Detail(props) {
 
       <Nav variant="tabs" defaultActiveKey="link0">
         <Nav.Item>
-          <Nav.Link eventKey="link0">버튼0</Nav.Link>
+          <Nav.Link
+            eventKey="link0"
+            onClick={() => {
+              setTab(0);
+            }}
+          >
+            버튼0
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link
@@ -81,19 +92,28 @@ function Detail(props) {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <TabContent tab={tab} />
+      <TabContent tab={tab} shoes={props.shoes} />
     </div>
   );
 }
 
-function TabContent({ tab }) {
-  if (tab == 0) {
-    return <div>내용0</div>;
-  } else if (tab == 1) {
-    return <div>내용1</div>;
-  } else if (tab == 2) {
-    return <div>내용2</div>;
-  }
+function TabContent({ tab, shoes }) {
+  let [fade, setFade] = useState("");
+  useEffect(() => {
+    let a = setTimeout(() => {
+      setFade("end");
+    }, 100);
+
+    return () => {
+      clearTimeout(a);
+      setFade("");
+    };
+  }, [tab]);
+  return (
+    <div className={"start " + fade}>
+      {[<div>{shoes[0].title}</div>, <div>내용1</div>, <div>내용2</div>][tab]}
+    </div>
+  );
 }
 
 export default Detail;
