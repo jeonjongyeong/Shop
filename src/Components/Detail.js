@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { plusContent } from "../store";
 
 function Detail(props) {
   let { id } = useParams();
+
+  let dispatch = useDispatch();
 
   // let [count, setCount] = useState(0);
   let [chance, setChance] = useState(true);
@@ -55,7 +59,14 @@ function Detail(props) {
           <h4 className="pt-5">{props.shoes[id].title}</h4>
           <p>{props.shoes[id].content}</p>
           <p>{props.shoes[id].price}원</p>
-          <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              dispatch(plusContent());
+            }}
+          >
+            주문하기
+          </button>
         </div>
       </div>
 

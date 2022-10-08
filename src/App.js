@@ -36,6 +36,31 @@ function App() {
                   })}
                 </div>
               </div>
+              <button
+                onClick={() => {
+                  <p>로딩중..</p>;
+                  setCount(count + 1);
+                  if (count > 3) {
+                    alert("더보기가 없습니다.");
+                  }
+                  axios
+                    .get(
+                      "https://codingapple1.github.io/shop/data" +
+                        count +
+                        ".json"
+                    )
+                    .then((result) => {
+                      console.log(result.data);
+                      let copy = [...shoes, ...result.data];
+                      setShoes(copy);
+                    })
+                    .catch(() => {
+                      console.log("실패했습니다.");
+                    });
+                }}
+              >
+                더보기
+              </button>
             </>
           }
         />
@@ -68,27 +93,6 @@ function App() {
           <Route path="two" element={<div>생일기념 쿠폰받기</div>}></Route>
         </Route>
       </Routes>
-      <button
-        onClick={() => {
-          <p>로딩중..</p>;
-          setCount(count + 1);
-          if (count > 3) {
-            alert("더보기가 없습니다.");
-          }
-          axios
-            .get("https://codingapple1.github.io/shop/data" + count + ".json")
-            .then((result) => {
-              console.log(result.data);
-              let copy = [...shoes, ...result.data];
-              setShoes(copy);
-            })
-            .catch(() => {
-              console.log("실패했습니다.");
-            });
-        }}
-      >
-        더보기
-      </button>
     </div>
   );
 }
