@@ -1,11 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
-import { Context1 } from "../App.js";
 
 function Detail(props) {
-  let { 재고 } = useContext(Context1);
-
   let { id } = useParams();
 
   // let [count, setCount] = useState(0);
@@ -61,7 +58,6 @@ function Detail(props) {
           <button className="btn btn-danger">주문하기</button>
         </div>
       </div>
-      {재고}
 
       <Nav variant="tabs" defaultActiveKey="link0">
         <Nav.Item>

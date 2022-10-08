@@ -1,19 +1,17 @@
 import "./App.css";
-import { createContext, useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Components/Navbar";
 import Main from "./Components/main";
 import Detail from "./Components/Detail";
+import Cart from "./Components/Cart";
 import data from "./data";
 import { Routes, Route, Outlet } from "react-router-dom";
 import axios from "axios";
 
-export let Context1 = createContext();
-
 function App() {
   let [shoes, setShoes] = useState(data);
   let [count, setCount] = useState(2);
-  let [재고] = useState([10, 11, 12]);
 
   return (
     <div className="App">
@@ -41,14 +39,8 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/detail/:id"
-          element={
-            <Context1.Provider value={{ 재고 }}>
-              <Detail shoes={shoes} />
-            </Context1.Provider>
-          }
-        />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<div>404없는 페이지</div>} />
         <Route
           path="/about"
