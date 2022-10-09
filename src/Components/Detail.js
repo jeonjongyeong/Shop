@@ -62,7 +62,7 @@ function Detail(props) {
           <button
             className="btn btn-danger"
             onClick={() => {
-              dispatch(plusContent());
+              dispatch(plusContent({ id: 1, name: "Grey Yordan", count: 1 }));
             }}
           >
             주문하기
