@@ -11,9 +11,20 @@ function Detail(props) {
 
   // let [count, setCount] = useState(0);
   let [chance, setChance] = useState(true);
+  let [fade2, setFade2] = useState("");
   let [num, setNum] = useState("");
   let [tab, setTab] = useState(0);
-  let [fade2, setFade2] = useState("");
+
+  // let findItem = props.shoes.find((x) => x.id === id);
+
+  // useEffect(() => {
+  //   let out = localStorage.getItem("watched");
+  //   out = JSON.parse(out);
+  //   out.push(findItem.id);
+  //   out = new Set(findItem);
+  //   out = Array.from(findItem);
+  //   localStorage.setItem("watched", JSON.stringify(out));
+  // }, []);
 
   useEffect(() => {
     setFade2("end");
